@@ -26,7 +26,7 @@ public class inventario {
                 return p;
             }
         }
-        return null; // Si no lo encuentra
+        return null;
     }
 
     public void movimientoStock(String codigo, int cantidad, String tipoMovimiento) {
