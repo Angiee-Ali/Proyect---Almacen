@@ -7,7 +7,7 @@ public class Produc {
     private String nomb;
     private int stock;
 public Produc(String cod, String nomb, int stock){
-    this.cod = cod;
+        this.cod = cod;
         this.nomb = nomb;
         this.stock = stock;
     }
