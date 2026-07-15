@@ -1,20 +1,20 @@
 
-package testproyect;
-import java.util.Scanner;
+package sistema.de.registro;
 
+import java.util.Scanner;
 public class test01 {
 
-
+    
     public static void main(String[] args) {
-       Scanner scanner = new Scanner(System.in);
-        inventario gestor = new inventario();
+        Scanner scanner = new Scanner(System.in);
+        Inventario gestor = new Inventario();
         boolean salir = false;
 
-        System.out.println("=== SISTEMA DE REGISTRO DE MERCADERÍA ===");
+        System.out.println("---SISTEMA DE REGISTRO DE MERCADERÍA ---");
 
         while (!salir) {
-            System.out.println("\n1. Registrar nuevo producto");
-            System.out.println("2. Registrar entrada de distribuidor");
+            System.out.println("\n1. Registrar nuevo empleado");
+            System.out.println("2. Registrar nuevo distribuidor");
             System.out.println("3. Registrar nuevo producto de mercadería");
             System.out.println("4. Entrada de mercadería (Sumar stock)");
             System.out.println("5. Salida de mercadería (Restar stock)");
