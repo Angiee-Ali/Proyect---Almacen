@@ -1,12 +1,11 @@
 
-package testproyect;
+package sistema.de.registro;
 import java.util.ArrayList;
 
 public class inventario {
-    
-    private ArrayList<Empleado>listaEmpleados;
+    private ArrayList<empleado>listaEmpleados;
     private ArrayList<Distribuidor>listaDistribuidores;
-    private ArrayList<Produc>listaProductos;
+    private ArrayList<Producto>listaProductos;
     
     public inventario() {
         
@@ -15,7 +14,7 @@ public class inventario {
         this.listaProductos = new ArrayList<>();
     }
     public void registrarEmpleado(String nombre, String dni) {
-        listaEmpleados.add(new Empleado(nombre, dni));
+        listaEmpleados.add(new empleado(nombre, dni));
         System.out.println("Registro de Empleado realizado con éxito");
     }
     public void registrarDistribuidor(String RUC, String nombre) {
@@ -29,13 +28,13 @@ public class inventario {
             System.out.println("Error: El código " + codigo + " ya está registrado.");
             return;
         }
-        listaProductos.add(new Produc(codigo, nombre, stock));
+        listaProductos.add(new Producto(codigo, nombre, stock));
         System.out.println("Registro de Producto realizado con éxito");
     }
 
     
-    public Empleado buscarEmpleado(String dni) {
-        for (Empleado e : listaEmpleados) {
+    public empleado buscarEmpleado(String dni) {
+        for (empleado e : listaEmpleados) {
             if (e.getDni().equals(dni)) return e;
         }
         return null;
@@ -46,8 +45,8 @@ public class inventario {
         }
         return null;
     }
-    public Produc buscarProducto(String codigo) {
-        for (Produc p : listaProductos) {
+    public Producto buscarProducto(String codigo) {
+        for (Producto p : listaProductos) {
             if (p.getCodigo().equals(codigo)) {
                 return p;
             }
@@ -55,8 +54,8 @@ public class inventario {
         return null;
     }
    public void registrarEntrada(String codProducto, int cantidad, String dniEmpleado, String RUCDistribuidor){
-    Produc p = buscarProducto(codProducto);
-    Empleado e = buscarEmpleado(dniEmpleado);
+    Producto p = buscarProducto(codProducto);
+    empleado e = buscarEmpleado(dniEmpleado);
     Distribuidor d = buscarDistribuidor(RUCDistribuidor);
     
     if (p == null) {
@@ -82,8 +81,8 @@ public class inventario {
     
 
     public void registrarSalida(String codProducto, int cantidad, String dniEmpleado){
-        Produc p = buscarProducto(codProducto);
-        Empleado e = buscarEmpleado(dniEmpleado);
+        Producto p = buscarProducto(codProducto);
+        empleado e = buscarEmpleado(dniEmpleado);
         
         if (p == null) {
             System.out.println("Error: Verificar, Producto no encontrado.");
@@ -107,10 +106,34 @@ public class inventario {
     }
 
     public void mostrarInventario() {
-        System.out.println("\n--- ESTADO DEL INVENTARIO ---");
-        for (Produc p : listaProductos) {
-            System.out.println(p.toString());
+     System.out.println("\n--------REPORTE DEL SISTEMA---------");
+
+        System.out.println("\n--- 1. INVENTARIO ---");
+        if (listaProductos.isEmpty()) {
+            System.out.println("No hay productos registrados.");
+        } else {
+            for (Producto p : listaProductos) {
+                System.out.println(p.toString());
+            }
         }
-        System.out.println("-----------------------------");
+
+        System.out.println("\n--- 2. PERSONAL REGISTRADO ---");
+        if (listaEmpleados.isEmpty()) {
+            System.out.println("No hay empleados registrados.");
+        } else {
+            for (empleado e : listaEmpleados) {
+                System.out.println(e.toString());
+            }
+        }
+
+        System.out.println("\n--- 3. DISTRIBUIDORES ASOCIADOS ---");
+        if (listaDistribuidores.isEmpty()) {
+            System.out.println("No hay distribuidores registrados.");
+        } else {
+            for (Distribuidor d : listaDistribuidores) {
+                System.out.println(d.toString());
+            }
+        }
     }
-}
+}    
+     
